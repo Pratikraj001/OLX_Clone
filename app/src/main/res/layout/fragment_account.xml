@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    tools:context=".AccountFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- ShapeableIamgeView: show user profile image -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profileIv"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorGray01"
+            android:src="@drawable/ic_person_white"
+            app:shapeAppearanceOverlay="@style/ImageStyle_Circle"/>
+        <!-- TextView: User Full Name Label -->
+        <TextView
+            android:id="@+id/nameLabelTv"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profileIv"
+            android:text="@string/name"/>
+        <!-- TextView: User Full Name -->
+        <TextView
+            android:id="@+id/nameTv"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profileIv"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:text="@string/full_name"/>
+        <!-- TextView: User Email Label -->
+        <TextView
+            android:id="@+id/emailLabelTv"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameLabelTv"
+            android:layout_marginTop="10dp"
+            android:text="@string/email"/>
+        <!-- TextView: User Email -->
+        <TextView
+            android:id="@+id/emailTv"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameLabelTv"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentEnd="true"
+            android:text="@string/example_example_com"/>
+        <!-- TextView: User Phone Label -->
+        <TextView
+            android:id="@+id/phoneLabelTv"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/emailLabelTv"
+            android:layout_marginTop="10dp"
+            android:text="@string/phone"/>
+        <!-- TextView: User Phone -->
+        <TextView
+            android:id="@+id/phoneTv"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/emailLabelTv"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentEnd="true"
+            android:text="@string/_01234567"/>
+        <!-- TextView: User Date of Birth Label -->
+        <TextView
+            android:id="@+id/dobLabelTv"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/phoneLabelTv"
+            android:layout_marginTop="10dp"
+            android:text="@string/dob"/>
+        <!-- TextView: User Date of Birth -->
+        <TextView
+            android:id="@+id/dobTv"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/phoneLabelTv"
+            android:layout_alignParentEnd="true"
+            android:text="@string/dd_mm_yyyy"
+            android:layout_marginTop="10dp"/>
+        <!-- TextView: User Member Since Label -->
+        <TextView
+            android:id="@+id/memberSinceLabelTv"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dobLabelTv"
+            android:layout_marginTop="10dp"
+            android:text="@string/member_since"/>
+        <!-- TextView: User Member Since -->
+        <TextView
+            android:id="@+id/memberSinceTv"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dobLabelTv"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:text="@string/dd_mm_yyyy"/>
+        <!-- TextView: Account Status Label -->
+        <TextView
+            android:id="@+id/verificationLabelTv"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/memberSinceLabelTv"
+            android:layout_marginTop="10dp"
+            android:text="@string/account_status"/>
+        <!-- TextView: User Account Status -->
+        <TextView
+            android:id="@+id/verificationTv"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/memberSinceLabelTv"
+            android:layout_alignParentEnd="true"
+            android:text="@string/not_verified"
+            android:textColor="@color/purple_700"/>
+        <!-- LinearLayout: show preference e.g. Logout, Edit Profile, Verify Account, Delete Account -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/verificationLabelTv"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+            <!-- TextView: User Preferences Label -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/preferences"/>
+            <!-- MaterialCardView: Click to logout -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/logoutCv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?selectableItemBackground"
+                app:cardCornerRadius="10dp"
+                app:contentPadding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_logout_gray"
+                    android:gravity="center_vertical"
+                    android:drawablePadding="10dp"
+                    android:drawableEnd="@drawable/ic_next_gray"
+                    android:text="@string/logout"/>
+
+
+            </com.google.android.material.card.MaterialCardView>
+            <!-- MaterialCardView: Click to goto EditProfileActivity -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/editProfileCv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?selectableItemBackground"
+                app:cardCornerRadius="10dp"
+                app:contentPadding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_person_gray"
+                    android:text="@string/edit_profile"
+                    android:gravity="center_vertical"
+                    android:drawableEnd="@drawable/ic_next_gray"/>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+</ScrollView>

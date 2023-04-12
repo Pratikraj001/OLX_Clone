@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ProfileEditActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbarRl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/m_toolbar_height">
+        <!--ImageButton: Click to go-back-->
+        <ImageView
+            android:id="@+id/toolbarBackBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            android:layout_centerVertical="true"/>
+        <!--TextView: Toolbar Title -->
+        <TextView
+            android:id="@+id/toolbarTitleTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/edit_profile"
+            android:layout_centerInParent="true"
+            style="@style/TextAppearance.MaterialComponents.Body1"/>
+        <!--View: To make Toolbar look separate from other UI-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGray02"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- RelativeLayout: Profile layout with option to pick and show image -->
+            <RelativeLayout
+                android:id="@+id/profileRl"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_centerHorizontal="true">
+
+                <!-- ShapeableImageView: Show image picked from camera/gallery or from firebase -->
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/profileIv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorGray01"
+                    android:src="@drawable/ic_person_white"
+                    android:scaleType="centerCrop"
+                    app:shapeAppearanceOverlay="@style/ImageStyle_Circle"/>
+
+
+                <!-- FloatingActionButton: Pick image from Camera/Gallery -->
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/profileImagePickFab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fabSize="mini"
+                    android:layout_alignParentEnd="true"
+                    android:tint="@color/white"
+                    android:src="@drawable/ic_add_photo_white"/>
+
+            </RelativeLayout>
+            <!--TextInputLayout: Input Name -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nameTil"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_below="@id/profileRl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Name"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:startIconDrawable="@drawable/ic_person_gray">
+
+                <EditText
+                    android:id="@+id/nameEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName|textCapWords"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- TextInputLayout: Input Date Of Birth -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dobTil"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_below="@id/nameTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="DOB (dd/MM/yyyy)"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:startIconDrawable="@drawable/ic_calendar_white">
+
+                <EditText
+                    android:id="@+id/dobEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName|textCapWords"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--TextInputLayout: Input email (Allow Edit if User type is Phone) -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailTil"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_below="@id/dobTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:startIconDrawable="@drawable/ic_email_white">
+
+                <EditText
+                    android:id="@+id/emailEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <!-- RelativeLayout: Phone layout with option to input country code and phone number -->
+            <RelativeLayout
+                android:id="@+id/phoneInputRl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/emailTil">
+
+                <!-- CountryCodePicker: Pick Country code for phone -->
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/countryCodePicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:minWidth="60dp"
+                    android:minHeight="56dp"
+                    app:ccp_autoDetectCountry="true"
+                    app:ccp_rememberLastSelection="true"
+                    app:ccp_showFlag="false"
+                    app:ccp_showNameCode="false"/>
+
+                <!-- TextInputLayout: Input phone number -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/phoneNumberTil"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_toEndOf="@id/countryCodePicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Phone Number"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:startIconDrawable="@drawable/ic_call_white">
+
+                    <EditText
+                        android:id="@+id/phoneNumberEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </RelativeLayout>
+            <!-- MaterialButton: Click to update profile -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/updateBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/phoneInputRl"
+                android:text="Update"
+                android:layout_marginTop="20dp"
+                app:cornerRadius="8dp"
+                app:icon="@drawable/ic_person_white"
+                android:minHeight="@dimen/m_button_height"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+</LinearLayout>

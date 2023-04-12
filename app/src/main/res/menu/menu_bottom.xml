@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menu_home"
+        android:title="@string/home"
+        android:icon="@drawable/ic_home_white"/>
+
+    <item android:id="@+id/menu_chats"
+        android:title="@string/chats"
+        android:icon="@drawable/ic_chat_white"/>
+
+    <item android:id="@+id/menu_sell"
+        android:title="@string/sell"
+        android:enabled="false"/>
+
+    <item android:id="@+id/menu_my_ads"
+        android:title="@string/my_ads"
+        android:icon="@drawable/ic_my_ads_white"/>
+
+    <item android:id="@+id/menu_account"
+        android:title="@string/account"
+        android:icon="@drawable/ic_person_white"/>
+</menu>

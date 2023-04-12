@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginOptionActivity">
+    <!--
+    <ImageButton
+        android:id="@+id/closeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_close_gray"
+        android:background="@android:color/transparent"
+        android:padding="10dp"
+        android:contentDescription="@string/todo" />
+        -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ImageView: Show App Logo -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/logo2"
+                android:layout_gravity="center_horizontal"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/todo" />
+
+            <!-- MaterialButton: login user with Google -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/loginGoogleBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:minHeight="@dimen/m_button_height"
+                android:text="@string/continue_with_google"
+                app:cornerRadius="8dp"
+                app:icon="@drawable/ic_google_white"/>
+
+            <!-- MaterialButton: Open Phone Login activity -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/loginPhoneBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/continue_with_phone"
+                app:cornerRadius="8dp"
+                android:minHeight="@dimen/m_button_height"
+                app:icon="@drawable/ic_call_white"
+                />
+
+            <!-- MaterialButton: Open email Login activity -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/loginEmailBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/continue_with_email"
+                app:cornerRadius="8dp"
+                android:minHeight="@dimen/m_button_height"
+                app:icon="@drawable/ic_email_white"
+                />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

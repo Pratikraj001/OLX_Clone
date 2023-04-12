@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbarRl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/m_toolbar_height">
+
+
+
+        <!-- TextView: Toolbar Title -->
+        <TextView
+            android:id="@+id/toolbarTitleTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:text="@string/home"/>
+
+        <!-- View: To make Toolbar separate from UI -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorGray02"/>
+    </RelativeLayout>
+
+    <!-- MY-->
+<!--
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/query_inputTil"
+        android:layout_below="@+id/toolbarRl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="10dp"
+        app:boxCornerRadiusBottomEnd="24dp"
+        app:boxCornerRadiusTopEnd="24dp"
+        app:boxCornerRadiusBottomStart="24dp"
+        app:boxCornerRadiusTopStart="24dp"
+        app:startIconDrawable="@drawable/ic_search_white">
+
+        <EditText
+            android:id="@+id/query_inputEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/worksans_medium"
+            android:hint="@string/search_hint"
+            android:inputType="textLongMessage"
+            android:textColorHint="@color/colorTextDarkDisabled"
+            android:textSize="16sp"/>
+
+    </com.google.android.material.textfield.TextInputLayout> -->
+
+    <FrameLayout
+        android:id="@+id/fragmentsFl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbarRl"
+        android:layout_above="@+id/view1">
+    </FrameLayout>
+
+    <!-- View: To make BottomNavigationView look separate from other UI -->
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGray02"
+        android:layout_above="@id/bottomNv" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/menu_bottom"
+        app:elevation="3dp"
+        app:labelVisibilityMode="labeled" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/sellFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/ic_add_white"
+        app:tint="@color/white"
+        android:contentDescription="@string/todo" />
+
+
+
+</RelativeLayout>

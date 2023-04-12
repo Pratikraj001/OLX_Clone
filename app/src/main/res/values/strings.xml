@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">OLX Clone</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="todo">TODO</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="continue_with_phone">Continue With Phone</string>
+    <string name="continue_with_email">Continue With Email</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="login_to_your_acccount">Login To Your Acccount</string>
+    <string name="email">Email</string>
+    <string name="not_have_account_register">Not Have Account? <b>Register</b></string>
+    <string name="create_a_new_account">Create a New Account</string>
+    <string name="conform_password">Conform Password</string>
+    <string name="already_have_account_login">Already Have Account? <b>Login</b></string>
+    <string name="register">Register</string>
+    <string name="chats">Chats</string>
+    <string name="sell">Sell</string>
+    <string name="my_ads">My ads</string>
+    <string name="account">Account</string>
+    <string name="logout">Logout</string>
+    <string name="login_to_your_account">Login To your Account</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="phone_login">Phone Login</string>
+    <string name="send_otp">Send OTP</string>
+    <string name="did_t_receive_otp_resend">Didn\'t receive OTP? <b>Resend</b></string>
+    <string name="verify">Verify</string>
+    <string name="name">Name</string>
+    <string name="full_name">Full Name</string>
+    <string name="example_example_com">example@example.com</string>
+    <string name="phone">Phone</string>
+    <string name="_01234567">01234567</string>
+    <string name="dob">DOB</string>
+    <string name="dd_mm_yyyy">dd/MM/yyyy</string>
+    <string name="member_since">Member Since</string>
+    <string name="account_status">Account Status</string>
+    <string name="not_verified">Not Verified</string>
+    <string name="preferences">Preferences</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="forgot_password_recover">Forgot Password? <b>Recover</b></string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="forgot_password_enter_your_registered_email_we_will_send_password_recovery_instructions_to_it">Forgot Password? Enter your registered email, we will send password recovery instructions to it.</string>
+    <string name="submit">SUBMIT</string>
+</resources>
