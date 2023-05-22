@@ -44,15 +44,15 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         //handle toolBackBtn click, go-back
         binding.toolbarBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 onBackPressed();
             }
         });
 
         binding.submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
+            public void onClick(View v) {
+                validateData();
             }
         });
 

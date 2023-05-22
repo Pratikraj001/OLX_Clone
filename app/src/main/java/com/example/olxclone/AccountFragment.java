@@ -1,5 +1,6 @@
 package com.example.olxclone;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 import com.example.olxclone.databinding.FragmentAccountBinding;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,9 +32,13 @@ public class AccountFragment extends Fragment {
 
     private static final String TAG = "ACCOUNT_TAG";
 
+    //Firebase Auth for auth related tasks
     private FirebaseAuth firebaseAuth;
 
+    //Context for this fragment class
     private Context mContext;
+
+    private ProgressDialog progressDialog;
 
     @Override
     public void onAttach(@NonNull Context context){
@@ -57,10 +64,17 @@ public class AccountFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @NonNull Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
 
+        //init/setup ProgressDialog to show while account verification
+        progressDialog = new ProgressDialog(mContext);
+        progressDialog.setTitle("Please wait");
+        progressDialog.setCanceledOnTouchOutside(false);
+
+        //get instance of Firebase auth for Auth related tasks
         firebaseAuth = FirebaseAuth.getInstance();
 
         loadMyInfo();
 
+        //handle logoutBtn click, logout user and start MainActivity
         binding.logoutCv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,13 +85,30 @@ public class AccountFragment extends Fragment {
 
             }
         });
-
+        // handle editProfileCv Click, Start ProfileEditActivity
         binding.editProfileCv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(mContext, ProfileEditActivity.class));
             }
         });
+
+        //handle changePassword click, Start ChangePasswordActivity
+        binding.changePasswordCv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(mContext, ChangePasswordActivity.class));
+            }
+        });
+
+        //handle verifyAccount click, start ChangePasswordActivity
+        binding.verifyAccountCv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                verifyAccount();
+            }
+        });
+
     }
     private void loadMyInfo(){
         DatabaseReference ref  = FirebaseDatabase.getInstance().getReference("Users");
@@ -118,16 +149,19 @@ public class AccountFragment extends Fragment {
                             //userType is Email, have to check if verified or not
                             boolean isVerified = firebaseAuth.getCurrentUser().isEmailVerified();
                             if(isVerified){
-                                //verified
+                                //verified, hide the verify Account option
+                                binding.verifyAccountCv.setVisibility(View.GONE);
                                 binding.verificationTv.setText("Verified");
                             }
                             else {
-                                //Not verified
+                                //Not verified, Show the verify Account option
+                                binding.verifyAccountCv.setVisibility(View.VISIBLE);
                                 binding.verificationTv.setText("Not Verified");
                             }
                         }
                         else{
                             //userType is Google or Phone, no need to check if verified or not as it is already verified
+                            binding.verifyAccountCv.setVisibility(View.GONE);
                             binding.verificationTv.setText("Verified");
                         }
                         try{
@@ -146,6 +180,35 @@ public class AccountFragment extends Fragment {
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
+                    }
+                });
+    }
+
+    private void verifyAccount(){
+        Log.d(TAG, "verifyAccount: ");
+
+        //show progress
+        progressDialog.setMessage("Sending Account verification instruction to your mail.");
+        progressDialog.show();
+
+        //send account/email verification instruction to the registered email.
+        firebaseAuth.getCurrentUser().sendEmailVerification()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        //instruction sent, check email, sometimes it goes in spam folder so if not in inbox check your spam folder
+                        Log.d(TAG, "onSuccess: Sent");
+                        progressDialog.dismiss();
+                        Utils.toast(mContext, "Account verification instruction sent to your email");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        //Failed to send instruction
+                        Log.d(TAG, "onFailure: ",e);
+                        progressDialog.dismiss();
+                        Utils.toast(mContext, "Failed due to "+e.getMessage());
                     }
                 });
     }
